@@ -72,8 +72,8 @@ extern "C" void app_main(void)
         // Ausgaenge setzen
         gpio_set_level(GPIO_Q1, I1 and I2 and I3); //Verwendung des AND aus der IEC IEC 61131; auch in C++ vorhanden, in C nicht not
 
-        // 2000ms warten  = Intervallzeit des Tasks
-        vTaskDelay(100 / portTICK_PERIOD_MS); // 2000ms cycle for Test.
+        // 300ms warten  = Intervallzeit des Tasks
+        vTaskDelay(100 / portTICK_PERIOD_MS); // 300ms cycle for Test.
     }
 }
 
