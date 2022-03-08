@@ -7,6 +7,25 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+
+    TON TON1;
+    TON1.PT = 1000;
+
+    while (true) // Endlos-Schleife
+    {
+        // Eingang lesen, das not wird gebraucht weil die Eingaenge bei losgelassenem Taster auf 3.3V sind, und der Taster auf GND schaltet.
+        bool I1 = not gpio_get_level(BUTTON_I1);
+
+        // den I1 an TON1 uebergeben, und TON1 aufrufen
+        TON1(I1);
+
+        // Ausgaenge setzen
+        gpio_set_level(GPIO_Q1, TON1.Q);
+
+        // 100ms warten  = Intervallzeit des Tasks
+        vTaskDelay(100 / portTICK_PERIOD_MS); // 500ms cycle for Test.
+
+
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "driver/gpio.h"
@@ -87,7 +106,7 @@ extern "C" void app_main(void)
         gpio_set_level(GPIO_Q3, TOGGLE1.Q);
 
         // 100ms warten  = Intervallzeit des Tasks
-        vTaskDelay(100 / portTICK_PERIOD_MS); // 100ms cycle for Test.
+        vTaskDelay(100 / portTICK_PERIOD_MS); // 500ms cycle for Test.
     }
 }
 
