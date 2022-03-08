@@ -59,8 +59,12 @@ extern "C" void app_main(void)
         // den I1 an TON1 uebergeben, und TON1 aufrufen
         TON1(I1);
 
+        //TOGGLE1.RST = I3;
+        TOGGLE1(I1 TON1.Q);
+
         // Ausgaenge setzen
-        gpio_set_level(GPIO_Q1, TON1.Q);
+        TOGGLE1.RST = I3;
+               TOGGLE1(I1);
 
         // 100ms warten  = Intervallzeit des Tasks
         vTaskDelay(100 / portTICK_PERIOD_MS); // 100ms cycle for Test.
